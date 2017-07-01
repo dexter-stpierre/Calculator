@@ -1,0 +1,15 @@
+#operators{
+  float:right;
+  display: inline-table;
+}
+#container{
+  display: inline-table;
+}
+.numbers{
+  float: left;
+  display: inline-table;
+}
+table{
+  display: inline-table;
+  float: inherit;
+}

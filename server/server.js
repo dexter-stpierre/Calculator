@@ -6,12 +6,48 @@ var port = 5000;
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended:true}));
 
+//global variables
+var data;
+var operator;
+var x;
+var y;
+var answer;
+
+app.post("/calculate", function(req, res){
+  //seperate the request into variables
+  data = req.body;
+  console.log(data);
+  operator = data.type;
+  x = parseFloat(data.x);
+  y = parseFloat(data.y);
+  console.log(operator);
+  //determine the type of operation and evaluate
+  if(operator == "Add"){
+    answer = x + y;
+  }
+  else if(operator == "Subtract"){
+    answer = x - y;
+  }
+  else if (operator == "Divide") {
+    answer = x / y;
+  }
+  else if (operator == "Multiply") {
+    answer = x * y;
+  }
+  else{
+    answer = "Please select an operator."
+  }
+  res.send({answer: answer})
+});
+
+//serves index.html
 app.get("/*", function(req, res){
   console.log("got a request for: " + req.params[0]);
   var file = req.params[0] || "views/index.html";
   res.sendFile(path.join(__dirname, "/public/", file));
-})
+});
 
+//turn on server
 app.listen(port, function(){
   console.log("listening on port " + port);
-})
+});
