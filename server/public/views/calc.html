@@ -3,44 +3,52 @@
 <head>
   <meta charset="utf-8">
   <title>Calculator</title>
-
+  <link rel="stylesheet" href="/views/calc.css">
+  <script src="/vendors/jquery.js" charset="utf-8"></script>
+  <script src="/scripts/client.js" charset="utf-8"></script>
 </head>
 <body>
   <div id="container">
     <table class="calc">
-      <tr class="numbers">
+      <thead>
+        <th id="answer">0</th>
+      </thead>
+      <tr>
         <td>
-          <table>
-            <tr id="topRowNums">
+          <table id="numbers">
+            <tr class="number x" id="topRowNums">
               <td><button>7</button></td>
               <td><button>8</button></td>
               <td><button>9</button></td>
             </tr>
-            <tr id="middleRowNums">
+            <tr class='number x'id="middleRowNums">
               <td><button>4</button></td>
               <td><button>5</button></td>
               <td><button>6</button></td>
             </tr>
-            <tr id="bottomRowNums">
+            <tr class='number x'id="bottomRowNums">
               <td><button>1</button></td>
               <td><button>2</button></td>
               <td><button>3</button></td>
             </tr>
             <tr id="bottomRow">
-              <td><button>0</button></td>
-              <td><button>.</button></td>
-              <td><button>=</button></td>
+              <td class="number x"><button>0</button></td>
+              <td class="number x"><button>.</button></td>
+              <td id="submit"><button>=</button></td>
             </tr>
           </table>
         </td>
         <td>
-          <table id="operators">
+          <table id="operations">
             <tr><td><button>+</button></td></tr>
             <tr><td><button>-</button></td></tr>
             <tr><td><button>/</button></td></tr>
             <tr><td><button>x</button></td></tr>
           </table>
         </td>
+      </tr>
+      <tr>
+        <td id="clear"><button>Clear</button></td>
       </tr>
     </table>
   </div>

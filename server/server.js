@@ -22,22 +22,28 @@ app.post("/calculate", function(req, res){
   y = parseFloat(data.y);
   console.log(operator);
   //determine the type of operation and evaluate
-  if(operator == "Add"){
+  if(operator == "+" || operator == "Add"){
     answer = x + y;
   }
-  else if(operator == "Subtract"){
+  else if(operator == "-" || operator == "Subtract"){
     answer = x - y;
   }
-  else if (operator == "Divide") {
+  else if (operator == "/" || operator == "Divide") {
     answer = x / y;
   }
-  else if (operator == "Multiply") {
+  else if (operator == "x" || operator == "Multiply") {
     answer = x * y;
   }
   else{
     answer = "Please select an operator."
   }
   res.send({answer: answer})
+});
+
+app.get("/calc", function(req, res){
+  console.log("got a request for: " + req.params[0]);
+  var file = "views/calc.html";
+  res.sendFile(path.join(__dirname, "/public/", file));
 });
 
 //serves index.html
