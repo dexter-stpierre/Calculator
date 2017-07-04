@@ -37,7 +37,6 @@ $(document).ready(function(){
   //assign numbers in input fields to numbers array and send all the data to server
   $("#submit").on("click", "button", function(){
     sendCalc()
-    y = y1;
     y1 = "";
     x1 = "";
   })
@@ -67,6 +66,8 @@ function sendCalc(){
   console.log(x);
   console.log(y);
   console.log("The operator is " + operator);
+  $(".y").off("click");
+  $(".y").on("click");
   $("#answer").text("computing...");
   $.ajax({
     type: "POST",
@@ -80,7 +81,7 @@ function sendCalc(){
       console.log(response.answer);
       setTimeout(function(){$('#answer').empty().append(response.answer);}, 3000);
       y1 = "";
-      x1 = "";
+      x1 = response.answer;
       y = "";
       x = "";
     }
